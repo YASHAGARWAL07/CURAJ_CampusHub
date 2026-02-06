@@ -546,3 +546,551 @@
   <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CU Hub - Your Campus Companion | CURAJ</title>
+  <meta name="description" content="CU Hub - The all-in-one digital platform for CURAJ students. Access rides, marketplace, notes, events, and more.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Ambient Background -->
+  <div class="ambient-bg">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+    <div class="noise-overlay"></div>
+  </div>
+
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-container">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">CU HUB</span>
+          <span class="logo-sub">Campus Companion</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" role="navigation">
+      <button class="nav-link active" data-page="dashboard">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </span>
+        <span class="nav-label">Dashboard</span>
+      </button>
+      <button class="nav-link" data-page="rides">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path>
+            <polygon points="12 15 17 21 7 21 12 15"></polygon>
+          </svg>
+        </span>
+        <span class="nav-label">Ride Share</span>
+        <span class="nav-badge">7</span>
+      </button>
+      <button class="nav-link" data-page="marketplace">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Marketplace</span>
+      </button>
+      <button class="nav-link" data-page="notes">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Notes & PYQs</span>
+      </button>
+      <button class="nav-link" data-page="events">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </span>
+        <span class="nav-label">Events</span>
+      </button>
+      <button class="nav-link" data-page="lost-found">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Lost & Found</span>
+      </button>
+      <button class="nav-link" data-page="bookmarks">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Bookmarks</span>
+        <span class="nav-badge" id="bookmarkCount">0</span>
+      </button>
+      <button class="nav-link" data-page="complaints">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </span>
+        <span class="nav-label">Complaints</span>
+      </button>
+      <button class="nav-link" data-page="about">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </span>
+        <span class="nav-label">About</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="quick-actions">
+        <button class="quick-action-btn" title="Theme Toggle" id="themeToggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="developer-credits">
+        <div class="developer-avatar">
+          <img src="photo.jpeg" alt="Yash Agarwal" onerror="this.src='https://ui-avatars.com/api/?name=Yash+Agarwal&background=4F46E5&color=fff&size=48'">
+        </div>
+        <div class="developer-info">
+          <span class="dev-badge-small">BUILT BY</span>
+          <span class="dev-name">Yash Agarwal</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main" id="mainContent">
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="title" id="greetingTitle">Good Morning, Yash</h1>
+        <p class="subtitle">Your campus hub awaits</p>
+      </div>
+
+      <div class="topbar-right">
+        <div class="search-wrapper">
+          <div class="search-container">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" id="globalSearch" placeholder="Search anything..." autocomplete="off">
+            <button class="search-clear" id="searchClear">✕</button>
+            <kbd class="search-kbd">⌘K</kbd>
+          </div>
+          <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <div class="topbar-actions">
+          <div class="notif-wrapper">
+            <button class="icon-btn" id="notifBtn" aria-label="Notifications">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notif-dot" id="notifDot"></span>
+              <span class="notif-count" id="notifCount">2</span>
+            </button>
+            
+            <div class="notif-panel" id="notifPanel">
+              <div class="notif-header">
+                <h2>Notifications</h2>
+                <button class="text-btn" id="markAllRead">Mark all read</button>
+              </div>
+              <div class="notif-list" id="notifList"></div>
+            </div>
+          </div>
+
+          <div class="profile-menu">
+            <button class="profile-chip" id="profileBtn">
+              <div class="avatar">
+                <img src="photo.jpeg" alt="Profile" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+                <span class="avatar-fallback">YA</span>
+              </div>
+              <div class="profile-text">
+                <span class="profile-name">Yash Agarwal</span>
+                <span class="profile-meta">CSE · 2nd Year</span>
+              </div>
+            </button>
+            
+            <div class="profile-dropdown" id="profileDropdown">
+              <button class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>View Profile</span>
+              </button>
+              <button class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>Privacy</span>
+              </button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item danger" id="dropdownLogout">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div id="dashboardContent">
+      <!-- Quick Stats -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Active Rides</span>
+            <span class="stat-trend up">+2</span>
+          </div>
+          <div class="stat-value">7</div>
+          <div class="stat-footer">
+            <div class="stat-bar">
+              <div class="stat-bar-fill" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Marketplace Items</span>
+            <span class="stat-trend up">+5</span>
+          </div>
+          <div class="stat-value">24</div>
+          <div class="stat-footer">
+            <div class="stat-bar">
+              <div class="stat-bar-fill" style="width: 60%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Study Resources</span>
+            <span class="stat-trend up">+8</span>
+          </div>
+          <div class="stat-value">156</div>
+          <div class="stat-footer">
+            <div class="stat-bar">
+              <div class="stat-bar-fill" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Open Issues</span>
+            <span class="stat-trend down">-1</span>
+          </div>
+          <div class="stat-value">3</div>
+          <div class="stat-footer">
+            <div class="stat-bar">
+              <div class="stat-bar-fill danger" style="width: 30%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Cards -->
+      <section class="features-grid">
+        <article class="feature-card featured">
+          <div class="feature-header">
+            <div class="feature-icon ride-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path>
+                <polygon points="12 15 17 21 7 21 12 15"></polygon>
+              </svg>
+            </div>
+            <span class="feature-badge popular">Popular</span>
+          </div>
+          <h2>Ride Share</h2>
+          <p>Find or offer rides with verified students. Safe, convenient, and eco-friendly.</p>
+          <button class="feature-btn" id="openRideModal">
+            <span>Browse Rides</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon marketplace-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+            </div>
+            <span class="feature-badge new">New</span>
+          </div>
+          <h2>Marketplace</h2>
+          <p>A campus marketplace to buy and sell second-hand gadgets at student-friendly prices.</p>
+          <button class="feature-btn" data-action="marketplace">
+            <span>Explore Items</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon notes-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <span class="feature-badge trending">Trending</span>
+          </div>
+          <h2>Notes & PYQs</h2>
+          <p>Access comprehensive study materials and previous year question papers.</p>
+          <button class="feature-btn" data-action="notes">
+            <span>Open Library</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon events-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+          </div>
+          <h2>Events & Clubs</h2>
+          <p>Discover workshops, hackathons, and exciting club activities on campus.</p>
+          <button class="feature-btn" data-action="events">
+            <span>View Events</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon lost-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </div>
+          </div>
+          <h2>Lost & Found</h2>
+          <p>Report lost items or search for found belongings across campus.</p>
+          <button class="feature-btn" data-action="lost-found">
+            <span>Browse Items</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon complaints-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+          </div>
+          <h2>Complaints</h2>
+          <p>Register campus issues and track their resolution progress.</p>
+          <button class="feature-btn" data-action="complaints">
+            <span>File Issue</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </article>
+      </section>
+    </div>
+
+    <!-- About Content (dynamically generated) -->
+    <div id="aboutContent" class="about-content" style="display: none;"></div>
+    
+    <!-- Bookmarks Content (dynamically generated) -->
+    <div id="bookmarksContent" class="bookmarks-content" style="display: none;"></div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="rideModal">
+    <div class="modal-backdrop" id="rideBackdrop"></div>
+    <div class="modal-container">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2 id="modalTitle">Available Rides</h2>
+            <p class="modal-subtitle">Find or offer rides with verified students</p>
+          </div>
+          <button class="icon-btn" id="closeRideModal" aria-label="Close modal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-filters" id="modalFilters"></div>
+        <div class="modal-body" id="rideModalBody"></div>
+        <div class="modal-footer">
+          <button class="secondary-btn" id="modalActionBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Post New Ride</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Assistant -->
+  <button class="ai-fab" id="aiFab" aria-label="AI Assistant">
+    <div class="ai-fab-ring"></div>
+    <div class="ai-fab-content">
+      <svg class="ai-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        <circle cx="9" cy="10" r="1" fill="currentColor"></circle>
+        <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
+        <path d="M9 14s1 1 3 1 3-1 3-1"></path>
+      </svg>
+      <span class="ai-label">AI</span>
+    </div>
+  </button>
+
+  <div class="ai-widget" id="aiWidget">
+    <div class="ai-header">
+      <div class="ai-header-content">
+        <div class="ai-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="9" cy="10" r="1" fill="currentColor"></circle>
+            <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
+            <path d="M9 14s1 2 3 2 3-2 3-2"></path>
+          </svg>
+        </div>
+        <div>
+          <h2>CURAJ Assistant</h2>
+          <span class="ai-status">
+            <span class="status-dot"></span>
+            Online
+          </span>
+        </div>
+      </div>
+      <button class="icon-btn small" id="closeAiWidget" aria-label="Close assistant">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="ai-body" id="aiBody">
+      <div class="ai-message bot">
+        <div class="message-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="9" cy="10" r="1" fill="currentColor"></circle>
+            <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
+            <path d="M9 14s1 2 3 2 3-2 3-2"></path>
+          </svg>
+        </div>
+        <div class="message-content">
+          <p>Hi! 👋 I'm your CURAJ AI Assistant. I can help you navigate campus life, find rides, access notes, and much more!</p>
+        </div>
+      </div>
+    </div>
+    <div class="ai-suggestions">
+      <button class="suggestion-chip">Find rides to Jaipur</button>
+      <button class="suggestion-chip">TOC PYQs</button>
+      <button class="suggestion-chip">Upcoming events</button>
+    </div>
+    <form class="ai-input-form" id="aiForm">
+      <input type="text" id="aiInput" placeholder="Ask me anything..." autocomplete="off">
+      <button type="submit" class="ai-send-btn" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
